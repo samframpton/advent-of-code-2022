@@ -1,75 +1,35 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        var totalScore = 0
-        input.map { it[0] to it[2] }.forEach {
-            val (opponent, you) = it
-            when (you) {
-                'X' -> {
-                    totalScore += 1
-                    when (opponent) {
-                        'A' -> totalScore += 3
-                        'B' -> totalScore += 0
-                        'C' -> totalScore += 6
-                    }
-                }
-
-                'Y' -> {
-                    totalScore += 2
-                    when (opponent) {
-                        'A' -> totalScore += 6
-                        'B' -> totalScore += 3
-                        'C' -> totalScore += 0
-                    }
-                }
-
-                'Z' -> {
-                    totalScore += 3
-                    when (opponent) {
-                        'A' -> totalScore += 0
-                        'B' -> totalScore += 6
-                        'C' -> totalScore += 3
-                    }
-                }
+    fun part1(input: List<String>) =
+        input.map {
+            when (it) {
+                "A X" -> 4
+                "A Y" -> 8
+                "A Z" -> 3
+                "B X" -> 1
+                "B Y" -> 5
+                "B Z" -> 9
+                "C X" -> 7
+                "C Y" -> 2
+                "C Z" -> 6
+                else -> 0
             }
-        }
-        return totalScore
-    }
+        }.sum()
 
-    fun part2(input: List<String>): Int {
-        var totalScore = 0
-        input.map { it[0] to it[2] }.forEach {
-            val (opponent, you) = it
-            when (you) {
-                'X' -> {
-                    totalScore += 0
-                    when (opponent) {
-                        'A' -> totalScore += 3
-                        'B' -> totalScore += 1
-                        'C' -> totalScore += 2
-                    }
-                }
-
-                'Y' -> {
-                    totalScore += 3
-                    when (opponent) {
-                        'A' -> totalScore += 1
-                        'B' -> totalScore += 2
-                        'C' -> totalScore += 3
-                    }
-                }
-
-                'Z' -> {
-                    totalScore += 6
-                    when (opponent) {
-                        'A' -> totalScore += 2
-                        'B' -> totalScore += 3
-                        'C' -> totalScore += 1
-                    }
-                }
+    fun part2(input: List<String>) =
+        input.map {
+            when (it) {
+                "A X" -> 3
+                "A Y" -> 4
+                "A Z" -> 8
+                "B X" -> 1
+                "B Y" -> 5
+                "B Z" -> 9
+                "C X" -> 2
+                "C Y" -> 6
+                "C Z" -> 7
+                else -> 0
             }
-        }
-        return totalScore
-    }
+        }.sum()
 
     val input = readInput("Day02")
     println(part1(input))
